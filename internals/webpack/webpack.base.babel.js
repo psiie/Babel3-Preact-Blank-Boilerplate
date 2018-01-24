@@ -1,6 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: './app/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
 
 process.noDeprecation = true; // see https://github.com/webpack/loader-utils/issues/56
 
@@ -78,6 +85,7 @@ module.exports = options => ({
     ],
   },
   plugins: options.plugins.concat([
+    HtmlWebpackPluginConfig,
     new webpack.ProvidePlugin({fetch: 'exports-loader?self.fetch!whatwg-fetch'}),
     new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)}}), // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV` inside your code for any environment checks;
     new webpack.NamedModulesPlugin(),
