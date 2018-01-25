@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = require('./webpack.base.babel')({
+module.exports = require('./base')({
   entry: {
     app: path.join(process.cwd(), 'app/index.js'),
   },
@@ -17,6 +17,7 @@ module.exports = require('./webpack.base.babel')({
     const plugins = [
       // new webpack.optimize.LimitChunkCountPlugin({maxChunks: 2}),
       new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+      new BundleAnalyzerPlugin({ 'process.env.NODE_ENV': '"production"' }),
       // new webpack.optimize.MoxduleConcatenationPlugin(),
       // new webpack.optimize.CommonsChunkPlugin({
       //   name: 'vendor',
