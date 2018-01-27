@@ -17,7 +17,7 @@ function developmentMiddleware(app, options) {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
-  const webpackConfig = require('webpack/dev');
+  const webpackConfig = require('../webpack/dev');
   const compiler = webpack(webpackConfig);
   const middleware = webpackDevMiddleware(compiler, {
     noInfo: true,

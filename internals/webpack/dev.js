@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const log = require('components/log');
 const glob = require('glob');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -52,7 +51,7 @@ function dependencyHandlers() {
   if (!dllPlugin) return commonsChunkPlugin; // If the package.json does not have a dllPlugin property, use the CommonsChunkPlugin
   if (!dllPlugin.dlls) { /* exclude any server side dependencies by listing them in dllConfig.exclude */
     if (!fs.existsSync(manifestPath)) {
-      log.error('The DLL manifest is missing. Please run `npm run build:dll`');
+      console.error('The DLL manifest is missing. Please run `npm run build:dll`');
       process.exit(0);
     }
     return dllReferencePlugin;
@@ -62,9 +61,9 @@ function dependencyHandlers() {
   const dllManifests = Object.keys(dllPlugin.dlls).map((name) => path.join(dllPath, `/${name}.json`));
   return dllManifests.map((manifestPath) => {
     if (!fs.existsSync(path) && !fs.existsSync(manifestPath)) {
-      log.error(`The following Webpack DLL manifest is missing: ${path.basename(manifestPath)}`);
-      log.error(`Expected to find it in ${dllPath}`);
-      log.error('Please run: npm run build:dll');
+      console.error(`The following Webpack DLL manifest is missing: ${path.basename(manifestPath)}`);
+      console.error(`Expected to find it in ${dllPath}`);
+      console.error('Please run: npm run build:dll');
       process.exit(0);
     }
     return dllReferencePlugin;
