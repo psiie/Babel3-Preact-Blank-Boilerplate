@@ -61,7 +61,6 @@ class Logger {
     this.logLevel = (window && window.logLevel && this.LEVEL[window.logLevel.toUpperCase()]) || this.LEVEL.NONE;
 
     this.consoleLog(this.LEVEL.INFO, [`
-      Winback v1.3.2
       Logging Level ${this.logLevel}
     `]);
   }

@@ -15,7 +15,7 @@ function getDependencies() {
   const includeDependencies = _.uniq(dependencyNames.concat(include));
 
   return {
-    reactWinbackDeps: _.pullAll(includeDependencies, exclude),
+    reactDeps: _.pullAll(includeDependencies, exclude),
   };
 }
 

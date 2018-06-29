@@ -8,7 +8,7 @@ const pkg = require(path.join(process.cwd(), 'package.json'));
 const outputPath = path.join(process.cwd(), pkg.dllPlugin.path);
 const dllManifestPath = path.join(outputPath, 'package.json');
 const manifestText = JSON.stringify({
-  name: 'react-winback-dlls',
+  name: 'react-dlls',
   private: true,
   author: pkg.author,
   repository: pkg.repository,

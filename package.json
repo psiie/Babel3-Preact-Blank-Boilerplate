@@ -1,5 +1,5 @@
 {
-  "name": "preact-winback",
+  "name": "preact",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "build:dll": "node internals/server/dll-generate.js"
   },
   "keywords": [],
-  "author": "Ticketmaseter",
+  "author": "Reno McKenzie",
   "license": "ISC",
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -103,7 +103,7 @@
     ]
   },
   "dllPlugin": {
-    "path": "node_modules/react-winback-dlls",
+    "path": "node_modules/react-dlls",
     "exclude": [
       "chalk",
       "compression",

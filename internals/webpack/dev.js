@@ -31,8 +31,8 @@ if (dllPlugin) {
 
 function dependencyHandlers() {
   if (process.env.BUILDING_DLL) return []; // Don't do anything during the DLL Build step
-  const dllPath = path.resolve(process.cwd(), dllPlugin.path || 'node_modules/react-winback-dlls');
-  const manifestPath = path.resolve(dllPath, 'reactWinbackDeps.json');
+  const dllPath = path.resolve(process.cwd(), dllPlugin.path || 'node_modules/react-dlls');
+  const manifestPath = path.resolve(dllPath, 'reactDeps.json');
   const commonsChunkPlugin = [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
